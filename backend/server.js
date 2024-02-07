@@ -1,53 +1,29 @@
-import  Express from "express";
-import collection from "./db.js";
+import express from "express";
+import authRoutes from './router.js';
 import cors from 'cors';
-const app =Express();
-app.use(Express.json())
-app.use(Express.urlencoded({extended:true}))
-app.use(cors())
+import mongoose from 'mongoose';
+// import user from './Controller/userController.js'
+import userController from "./Controller/userController.js";
+const app = express();
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cors());
 
+// Use your routes
+app.use('/', authRoutes);
 
-app.post("/",async(req,res)=>{
-    const{email,password}=req.body;
-    try{
-        const check=await collection.findOne({email:email})
-        if(check){
-            res.json("exist")
-        }
-        else {
-            res.json("not exist")
-        }
-    }
-    catch(e){
-        res.json("not exist")
-    }
-})
+// MongoDB Connection
+mongoose.connect('mongodb+srv://raunit1995:VxUB9coLo2CVgWfw@cluster0.6hl1urk.mongodb.net/results', {
 
-app.post("/SignUp",async(req,res)=>{
-    const{email,password}=req.body;
+  
+}).then(() => {
+  console.log('Connected to MongoDB');
+}).catch((error) => {
+  console.error('Error connecting to MongoDB:', error);
+});
 
-    const data={
-        email:email,
-        password:password
-    }
-    try{
-        const check=await collection.findOne({email:email})
-        if(check){
-            res.json("exist")
-        }
-        else {
-            res.json("not exist")
-            await  collection.insertMany([data])
-        }
-    }
-    catch(e){
-        res.json("not exist")
-    }
-})
-
-
-const port =5000;
-app.listen(port,()=>{
-    console.log(`listening on port ${port}`);
-})
+const port = 5000;
+app.listen(port,async () => {
+  console.log(`Listening on port ${port}`);
+});
