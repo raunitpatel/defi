@@ -17,7 +17,60 @@ body {
     height: 100vh;
 }
 
-.navbar {
+.navbar_logged {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #333;
+    color: #fff;
+}
+
+
+.logo_logged {
+    background-color: white;
+    
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.project_title_logged {
+    height: 34px;
+    flex-grow: 1;
+    font-size: 24px;
+    padding-left: 5vw;
+    font-weight: bold;
+}
+.project_title_logged p{
+    height: 34px;
+    width: 203px;
+    background-color: white;
+    color: black;
+    
+}
+
+.welcome_logged {
+    flex-grow: 2;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.sign_in_details {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #f0f0f0;
+    text-align: center;
+}
+/* LOGGED IN PAGE */.navbar {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -60,13 +113,25 @@ body {
     border-radius: 5px;
     cursor: pointer;
 }
-
-.sign_in_details {
-    flex: 1;
+.logged_details{
     display: flex;
-    justify-content: center;
     align-items: center;
-    padding: 20px;
-    background-color: #f0f0f0;
-    text-align: center;
+}
+.first_box{
+    width: 50vw;
+}
+.result{
+    width:253px;
+    height: 253px;
+    background-color: purple;
+}
+.second_box{
+    width:253px;
+    height: 253px;
+    width: 50vw;
+}
+.nft_image{
+    width:253px;
+    height: 253px;
+    background-color: purple;
 }
