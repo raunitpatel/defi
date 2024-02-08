@@ -22,17 +22,17 @@ body {
     align-items: center;
     justify-content: space-between;
     padding: 20px;
-    background-color: #333;
-    color: #fff;
+    background-color: #1a2954;
+    color: #1a2954;
 }
 
 
 .logo_logged {
     background-color: white;
     
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
+    width: 400px;
+    height: 100px;
+    
     margin-right: 10px;
 }
 
@@ -52,13 +52,17 @@ body {
 }
 
 .welcome_logged {
-    flex-grow: 2;
+    
     padding: 10px 20px;
     background-color: #007bff;
     color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
 .sign_in_details {
@@ -152,4 +156,100 @@ body {
     width: 20vw;
     text-align: center;
     border-radius: 5%;
+}
+#fruits{
+    width:170px;
+    height: 38px;
+    border-radius: 10px;
+    background-color: white;
+    font-size: medium;
+    color: black;
+    border: none; 
+    border-bottom: 2px solid #ccc; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    padding: 8px;
+     margin-top: 10px;;
+}
+.login_section{
+    display: flex;
+    align-items: center;
+
+}
+.log_out button{
+    border-radius: 3px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+}
+.logged_details{
+    margin:50px auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+   
+}
+.first_box{
+    
+    width:400px;
+    height: 400px;
+    
+}
+.result{
+    width:400px;
+    height: 400px;
+    background-color: #1081a7;
+    border-radius: 30px;
+    
+}
+.second_box{
+    width:400px;
+    height: 400px;
+    
+}
+.nft_image{
+    width:400px;
+    height: 400px;
+    background-color: #1081a7;
+    border-radius: 30px;
+}
+
+.generate{
+    width:150px;
+    height: 38px;
+    border-radius: 10px;
+    background-color: rgb(168, 152, 29);
+    font-size: medium;
+    color: black;
+    border: none; 
+    
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    padding: 10px;
+    outline: green;
+     margin-top: 10px;
+     margin-left: 20px;
+     cursor: pointer;
+}
+
+.semester{
+    justify-content: space-around;
+    display: flex;
+    align-items: center;
+}
+
+.mint_nft{
+    width:150px;
+    height: 38px;
+    border-radius: 10px;
+    background-color: rgb(168, 152, 29);
+    font-size: medium;
+    color: black;                                                                                                                                                                                                                                     
+    border: none; 
+    
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    padding: 10px;
+    outline: green;
+     margin-top: 10px;                                                                                                                                                                                                                             
+     margin-left: 140px;
+     cursor: pointer;
+     
 }
