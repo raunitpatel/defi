@@ -4,8 +4,9 @@ export function SignIn(){
     return (
     <div className="sign_in">
         <div className="navbar">
-            <img src="" alt="" className="logo" />
-            <div className="project_title"><p>MintSem</p> </div>
+            {/* <img src="" alt="" className="logo" /> */}
+            {/* <div className="project_title"><p>MintSem</p> </div> */}
+            <div className="logo"></div>
             <div className="signin_button"><button onClick={()=>{window.location.href='/logged'}}>Sign In Using Outlook</button></div>
         </div>
         <div className="sign_in_details">

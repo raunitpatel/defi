@@ -62,53 +62,59 @@ body {
 }
 
 .sign_in_details {
+    background-image: url('./maximalfocus-VT4rx775FT4-unsplash.jpg');
+    /* background: linear-gradient(); */
+    background-size:cover ;
+    background-position: center;
     flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 20px;
-    background-color: #f0f0f0;
+    background-color: rgba(166, 173, 226, 1);
     text-align: center;
+    font-weight: bold;
+    font-size: large;
 }
-/* LOGGED IN PAGE */.navbar {
+
+/* LOGGED IN PAGE */
+.navbar {
+    /* background-image: url('./WhatsApp\ Image\ 2024-02-07\ at\ 19.42.05_efcd37c1.jpg');
+    background-size:cover ;
+    background-position: center; */
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 20px;
-    background-color: #333;
+    padding: 30px;
+    background-color: rgb(26, 48, 72);
     color: #fff;
 }
 
 
 .logo {
     background-color: white;
-    
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
+    background-image: url('./WhatsApp\ Image\ 2024-02-07\ at\ 19.42.05_efcd37c1.jpg');
+    background-size: cover;
+    background-position: center;
+    width: 20vw;
+    height: 10vh;
     margin-right: 10px;
 }
 
 .project_title {
-    height: 34px;
+    height: 30px;
     flex-grow: 1;
-    font-size: 24px;
+    font-size: 20px;
     padding-left: 5vw;
-    font-weight: bold;
+    padding-bottom: 4.5vh;
 }
-.project_title p{
-    height: 34px;
-    width: 203px;
-    background-color: white;
-    color: black;
-    
-}
+
 
 .signin_button button {
     flex-grow: 2;
     padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
+    background-color: white;
+    color:black;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -134,4 +140,16 @@ body {
     width:253px;
     height: 253px;
     background-color: purple;
+}
+
+.signin_button button{
+    background-color: white;
+    color:black;
+}
+.project_title p{
+    background-color: #fff;
+    color: black;
+    width: 20vw;
+    text-align: center;
+    border-radius: 5%;
 }
