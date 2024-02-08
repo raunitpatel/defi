@@ -1,5 +1,9 @@
 import axios from 'axios';
-export function LoggedIn(){
+import useEffect, { useState } from 'react'
+import { getUserByid } from '../api/userApi';
+
+function LoggedIn({loginUser}){
+    console.log(loginUser,'ajfklajflj')
     const getdata=()=>{
             axios.get('http://localhost:5000/get-user')
             .then(res=>{
@@ -9,13 +13,14 @@ export function LoggedIn(){
                 console.log(err);
             });
     }
+ 
     return (
         
     <div className="logged_in">
         <div className="navbar_logged">
             <img src="" alt="" className="logo_logged" />
             <div className="project_title_logged"><p>MintSem</p> </div>
-            <div className="welcome_logged">Welcome Raunit Patel</div>
+            {loginUser.length>0 && <div className="welcome_logged">{loginUser[0].Name}</div>}
             <div className="log_out"><button onClick={()=>{window.location.href='http://localhost:5000/logout'}}>Log out</button></div>
         </div>
         <div className="logged_details">
@@ -38,3 +43,5 @@ export function LoggedIn(){
     </div>
     );
 }
+
+export default LoggedIn;

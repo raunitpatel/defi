@@ -44,7 +44,13 @@ export const redirect = async (req, res) => {
 
     
     const user = await getUserFromToken(accessToken);
-
+    console.log(user,'he;;p');
+    res.cookie('user',user,{
+      maxAge:3074388,
+      secure:false,
+      expires:new Date(Date.now()+3073600),
+      httpOnly:false,
+    })
     console.log(user);
   //  console.log(accessToken);
 

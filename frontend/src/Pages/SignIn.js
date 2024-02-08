@@ -1,5 +1,4 @@
-
-export function SignIn(){
+function SignIn(){
 
     return (
     <div className="sign_in">
@@ -16,3 +15,5 @@ export function SignIn(){
        
     );
 }
+
+export default SignIn;

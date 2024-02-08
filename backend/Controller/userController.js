@@ -27,8 +27,9 @@ const userController = {
   // Get user by ID
   getUserById: async (req, res) => {
     const userId = req.params.id;
+    // console.log(userId);
     try {
-      const user = await User.findById(userId);
+      const user = await User.find({roll_no:userId});
       if (!user) {
         return res.status(404).json({ error: 'User not found' });
       }

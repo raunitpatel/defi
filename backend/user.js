@@ -19,6 +19,8 @@ export const getUserFromToken = async function (accessToken) {
             branch: response.data.jobTitle
         };
 
+        
+
         return userData;
     } catch (error) {
         console.error('Error fetching user information:', error);

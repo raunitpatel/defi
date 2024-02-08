@@ -2,9 +2,9 @@ import express from "express";
 import authRoutes from './router.js';
 import cors from 'cors';
 import mongoose from 'mongoose';
-// import user from './Controller/userController.js'
-import userController from "./Controller/userController.js";
+import userRouter from "./routes/userroutes.js";
 const app = express();
+
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -12,6 +12,7 @@ app.use(cors());
 
 // Use your routes
 app.use('/', authRoutes);
+app.use('/api',userRouter);
 
 // MongoDB Connection
 mongoose.connect('mongodb+srv://raunit1995:VxUB9coLo2CVgWfw@cluster0.6hl1urk.mongodb.net/results', {
@@ -26,4 +27,5 @@ mongoose.connect('mongodb+srv://raunit1995:VxUB9coLo2CVgWfw@cluster0.6hl1urk.mon
 const port = 5000;
 app.listen(port,async () => {
   console.log(`Listening on port ${port}`);
+  
 });
