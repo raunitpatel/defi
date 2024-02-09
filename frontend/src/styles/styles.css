@@ -180,6 +180,7 @@ body {
     border: none;
     background-color: #007bff;
     color: white;
+    height:50px;
 }
 .logged_details{
     margin:50px auto;
@@ -252,4 +253,10 @@ body {
      margin-left: 140px;
      cursor: pointer;
      
+}
+.login_details{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+   
 }
