@@ -66,7 +66,7 @@ function LoggedIn({ loginUser }) {
         const SMART_CONTRACT_NETWORK = "polygon-mumbai";
         const SMART_CONTRACT_ADDRESS = "0x7721A8769e9c5b7F1fbd40b0ed0a6c56D913728B";
         const WALLET_IMPORTED_ON_STARTON = "0x05923AAA784766D232Ed5f1C6c39d2CC011abEE2";
-        const RECEIVER_ADDRESS = "0x7A24efd8A8a46A2D71d419915972E5585168B107";
+        const RECEIVER_ADDRESS = "0x5BBcb4584cF3ee4739011c72f14504D9b7da52f9";
 
         // Ensure generatedBlob exists
         if (!generatedBlob) {
@@ -76,16 +76,21 @@ function LoggedIn({ loginUser }) {
 
         try {
             // Upload image to IPFS
-            const ipfsResponse = await uploadToIPFS(generatedBlob);
+            const response = await fetch(logo);
+            const imageBlob = await response.blob();
+            // const ipfsResponse = await uploadToIPFS(generatedBlob);
+            const ipfsResponse = await uploadToIPFS(imageBlob);
             console.log("IPFS Upload Success:", ipfsResponse);
+            // console.log("IPFS Upload Success:", ipfsResponse.cid);
 
             // Mint NFT using Starton API
-            const nft = await axios.post(`https://api.starton.io/v3/smart-contract/${SMART_CONTRACT_NETWORK}/${SMART_CONTRACT_ADDRESS}/call`, {
+            const nft = await starton.post(`https://api.starton.io/v3/smart-contract/${SMART_CONTRACT_NETWORK}/${SMART_CONTRACT_ADDRESS}/call`, {
                 functionName: "mint",
                 signerWallet: WALLET_IMPORTED_ON_STARTON,
                 speed: "low",
                 params: [RECEIVER_ADDRESS, ipfsResponse.cid],
             });
+
             console.log("NFT Minted:", nft.data);
             alert("NFT Minted successfully!");
         } catch (error) {
