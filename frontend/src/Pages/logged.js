@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import logo from "../images/WhatsApp Image 2024-02-07 at 19.42.05_efcd37c1.jpg";
 import axios from "axios";
+// import { redirect } from '../../../backend/auth';
 function LoggedIn({ loginUser }) {
     const [selectedSemester, setSelectedSemester] = useState("");
     const [cpi, setCPI] = useState('');
@@ -8,6 +9,9 @@ function LoggedIn({ loginUser }) {
     const [generatedImage, setGeneratedImage] = useState(null);
     const [generatedBlob, setGeneratedBlob] = useState(null); 
     const [prompt, setPrompt] = useState("");
+    const [cid,setCid]=useState("");
+    const [transaction,setTransaction]=useState("");
+    const [receiverAddress, setReceiverAddress] = useState("");
 
     const starton = axios.create({
         baseURL: "https://api.starton.io/v3",
@@ -38,6 +42,8 @@ function LoggedIn({ loginUser }) {
                 setCPI(semesterData.cpi);
                 setSPI(semesterData.spi);
                 setPrompt(`Create NFT based on following data: branch:${loginUser[0].branch}, semester:${selectedSemesterIndex}, cpi:${semesterData.cpi}, spi:${semesterData.spi}.`);
+                
+
             }
         }
     };
@@ -66,7 +72,7 @@ function LoggedIn({ loginUser }) {
         const SMART_CONTRACT_NETWORK = "polygon-mumbai";
         const SMART_CONTRACT_ADDRESS = "0x7721A8769e9c5b7F1fbd40b0ed0a6c56D913728B";
         const WALLET_IMPORTED_ON_STARTON = "0x05923AAA784766D232Ed5f1C6c39d2CC011abEE2";
-        const RECEIVER_ADDRESS = "0x5BBcb4584cF3ee4739011c72f14504D9b7da52f9";
+        // const RECEIVER_ADDRESS = "0x5BBcb4584cF3ee4739011c72f14504D9b7da52f9";
 
         // Ensure generatedBlob exists
         if (!generatedBlob) {
@@ -76,11 +82,12 @@ function LoggedIn({ loginUser }) {
 
         try {
             // Upload image to IPFS
-            const response = await fetch(logo);
-            const imageBlob = await response.blob();
-            // const ipfsResponse = await uploadToIPFS(generatedBlob);
-            const ipfsResponse = await uploadToIPFS(imageBlob);
-            console.log("IPFS Upload Success:", ipfsResponse);
+            // const response = await fetch(logo);
+            // const imageBlob = await response.blob();
+            const ipfsResponse = await uploadToIPFS(generatedBlob);
+            // const ipfsResponse = await uploadToIPFS(imageBlob);
+            console.log("IPFS Upload Success:", ipfsResponse.cid);
+            setCid(ipfsResponse.cid);
             // console.log("IPFS Upload Success:", ipfsResponse.cid);
 
             // Mint NFT using Starton API
@@ -88,10 +95,13 @@ function LoggedIn({ loginUser }) {
                 functionName: "mint",
                 signerWallet: WALLET_IMPORTED_ON_STARTON,
                 speed: "low",
-                params: [RECEIVER_ADDRESS, ipfsResponse.cid],
+                params: [receiverAddress, ipfsResponse.cid],
             });
 
-            console.log("NFT Minted:", nft.data);
+            // console.log("NFT Minted:", nft.data.transactionHash);
+            console.log("NFT Minted:", nft.data.transactionHash);
+            setTransaction(nft.data.transactionHash);
+
             alert("NFT Minted successfully!");
         } catch (error) {
             console.error("Failed to mint NFT:", error);
@@ -140,13 +150,20 @@ function LoggedIn({ loginUser }) {
                             ))}
                         </select>
                         <button className="generate" onClick={generateImage}>Generate Image</button>
-                    </div>
+                        <input placeholder='Wallet address' value={receiverAddress} onChange={(e) => setReceiverAddress(e.target.value)} /></div>
                 </div>
                 <div className="second_box">
                     <div className="nft_image">
                         {generatedImage && <img src={generatedImage} className="generated_image" alt="Generated Image" />}
                         <button className="mint_nft" onClick={mintNFT}>MINT NFT</button>
                     </div>
+                </div>
+                <div className="third_box">
+                    <div className="nft_image">
+                        {cid && <img src={`https://gateway.pinata.cloud/ipfs/${cid}`} className="generated_image" alt="Generated Image" />}
+                    </div>
+                    {transaction && <a className="transaction_website" href={`https://mumbai.polygonscan.com/tx/${transaction}`} target="_blank">Click here to see transaction History</a>}
+                                
                 </div>
             </div>
         </div>
