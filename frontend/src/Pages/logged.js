@@ -113,7 +113,7 @@ function LoggedIn({ loginUser }) {
             alert("NFT Minted successfully!");
         } catch (error) {
             console.error("Failed to mint NFT:", error);
-            alert("Failed to mint NFT.");
+            // alert("Failed to mint NFT.");
         }
     };
     
@@ -142,13 +142,14 @@ function LoggedIn({ loginUser }) {
                     <div className="result">
                         <div className="semester_name">SEMESTER {selectedSemester}</div>
                         {loginUser && loginUser.length > 0 && (
-                            <div>
+                            <div className='details'>
                                 <div className="result_name">{loginUser[0].Name}</div>
                                 <div className="result_roll">{loginUser[0].roll_no}</div>
+                                <div className="cpi">CPI:{cpi}</div>
+                            <div className="spi">SPI:{spi}</div>
                             </div>
                         )}
-                        <div className="cpi">CPI:{cpi}</div>
-                        <div className="spi">SPI:{spi}</div>
+                        
                     </div>
                     <div className="semester">
                         <select id="fruits" value={selectedSemester} onChange={handleSemesterChange}>
@@ -158,19 +159,22 @@ function LoggedIn({ loginUser }) {
                             ))}
                         </select>
                         <button className="generate" onClick={generateImage}>Generate Image</button>
-                        <input placeholder='Wallet address' value={receiverAddress} onChange={(e) => setReceiverAddress(e.target.value)} /></div>
+                        
+                        </div>
+                        <input placeholder='Wallet address' className='Wallet' value={receiverAddress} onChange={(e) => setReceiverAddress(e.target.value)} />
                 </div>
                 <div className="second_box">
                     <div className="nft_image">
                         {generatedImage && <img src={generatedImage} className="generated_image" alt="Generated Image" />}
-                        <button className="mint_nft" onClick={mintNFT}>MINT NFT</button>
+
                     </div>
+                    <button className="mint_nft" onClick={mintNFT}>MINT NFT</button>
                 </div>
                 <div className="third_box">
                     <div className="nft_image">
                         {cid && <img src={`https://gateway.pinata.cloud/ipfs/${cid}`} className="generated_image" alt="Generated Image" />}
                     </div>
-                    {transaction && <a className="transaction_website" href={`https://mumbai.polygonscan.com/tx/${transaction}`} target="_blank">Click here to see transaction History</a>}
+                    {transaction && <a className="transaction_website" href={`https://mumbai.polygonscan.com/tx/${transaction}`} target="_blank">Click here to see transaction Details</a>}
                                 
                 </div>
             </div>
