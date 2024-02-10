@@ -41,8 +41,16 @@ function LoggedIn({ loginUser }) {
             if (semesterData) {
                 setCPI(semesterData.cpi);
                 setSPI(semesterData.spi);
-                setPrompt(`Create NFT based on following data: branch:${loginUser[0].branch}, semester:${selectedSemesterIndex}, cpi:${semesterData.cpi}, spi:${semesterData.spi}.`);
+                setPrompt(`
+                You are a developer who has developed several miniature pictures which are quite creative and innovative.
+                You now take some inputs from user and generate pictures that somehow relate to the given data
+                and which look quite innovative and appealing.The user is an engineer who has just graduated. Now, create
+                an image based on following data which belong to the user, which is present within the double quotes : 
                 
+                "Branch: ${loginUser[0].branch}
+                Semester:${selectedSemesterIndex}
+                Grades (out of 10):${semesterData.cpi} "
+                `);   
 
             }
         }
