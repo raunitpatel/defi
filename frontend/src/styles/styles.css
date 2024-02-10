@@ -66,7 +66,7 @@ body {
 }
 
 .sign_in_details {
-    background-image: url('./design.jpg');
+    background-image: url('');
     /* background: linear-gradient(); */
     background-size:cover ;
     background-position: center;
@@ -75,10 +75,14 @@ body {
     justify-content: center;
     align-items: center;
     padding: 20px;
-    background-color: rgba(166, 173, 226, 1);
+    background-color: #0d1b2f;
     text-align: center;
     font-weight: bold;
     font-size: large;
+    flex-direction: column;
+    margin-left: 0;
+    width:50%;
+    
 }
 
 /* LOGGED IN PAGE */
@@ -90,7 +94,7 @@ body {
     align-items: center;
     justify-content: space-between;
     padding: 30px;
-    background-color: rgb(26, 48, 72);
+    background-color: #0f2a50;
     color: #fff;
 }
 
@@ -198,10 +202,13 @@ body {
     
 }
 .result{
+    padding: 20px;
     width:400px;
     height: 400px;
     background-color: #1081a7;
     border-radius: 30px;
+    justify-content: center;
+    text-align: left;
     
 }
 .second_box{
@@ -210,8 +217,8 @@ body {
     
 }
 .nft_image{
-    width:400px;
-    height: 400px;
+    width:430px;
+    height: 430px;
     background-color: #1081a7;
     border-radius: 30px;
 }
@@ -256,13 +263,89 @@ body {
      cursor: pointer;
      
 }
+/* .sign_in_details p{
+    height: 50vh;
+    width:50vw;
+    background-color: #0f2a50;
+    color: white;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    border-radius: 50px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 1);
+    flex-direction: column;
+} */
+.sign_in_details .signin_button {
+    margin-top: 20px; /* Add margin above the button */
+}
+.description{
+        height: 100%;
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* background-color: rgba(166, 173, 226, 1); */
+        text-align: center;
+        font-weight: bold;
+        font-size: large;
+        flex-direction: row;
+        height: 100%;
+       
+}
+.img{
+        flex: 1;
+        display: flex;
+        background-size: cover;
+        justify-content: center;
+        align-items: center;
+        background-color: black;
+        text-align: center;
+        color: white;
+        font-weight: bold;
+        font-size: large;
+        flex-direction: column;
+        height: 100%;
+        width:50%;
+        animation: fadeAnimation 5s infinite;
+    }
+    @keyframes fadeAnimation {
+        0%, 50% {
+          background-image: url('./maximalfocus-VT4rx775FT4-unsplash.jpg');
+        }
+        50.1%,100% {
+          background-image: url('./design.jpg');
+        }
+      }
+    .sign_in_details {
+        padding: 2px;
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: white;
+        text-align: center;
+        font-weight: bold;
+        font-size: large;
+        flex-direction: column;
+        height: 100%;
+        width:50%;
+        
+    }
 .login_details{
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: center;
    
 }
 .generated_image{
-    width:380px;
-    height: 380px;
+    border-radius: 30px;
+    width:430px;
+    height: 430px;
+}
+.sign_in_details button{
+    background-color: blue;
+    color: white;
+    height: 40px;
 }
